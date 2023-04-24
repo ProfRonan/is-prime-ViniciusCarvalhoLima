@@ -1,0 +1,130 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.10, pytest-7.3.1, pluggy-1.0.0
+rootdir: /home/seuronao/Documents/Is Prime-04-24-2023-04-50-47/ViniciusCarvalhoLima
+collected 26 items
+
+test_main.py FFFF......................                                  [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_not_valid[0] _______________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f6c4a99d9c0>
+test_input = '0'
+
+    @pytest.mark.parametrize(
+        "test_input", ["0", "-1", "-2", "-10"],
+    )
+    def test_not_valid(monkeypatch: MonkeyPatch, test_input: list[str]):
+        mocked_input = lambda prompt="": test_input
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        assert "Número inválido" in mocked_stdout.getvalue().strip()
+        assert "Primo" not in mocked_stdout.getvalue().strip()
+>       assert "Não primo" not in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Não primo' not in 'Número inválido\nNão primo'
+E         'Não primo' is contained here:
+E           Número inválido
+E           Não primo
+
+test_main.py:27: AssertionError
+______________________________ test_not_valid[-1] ______________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f6c4a9f3f70>
+test_input = '-1'
+
+    @pytest.mark.parametrize(
+        "test_input", ["0", "-1", "-2", "-10"],
+    )
+    def test_not_valid(monkeypatch: MonkeyPatch, test_input: list[str]):
+        mocked_input = lambda prompt="": test_input
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        assert "Número inválido" in mocked_stdout.getvalue().strip()
+        assert "Primo" not in mocked_stdout.getvalue().strip()
+>       assert "Não primo" not in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Não primo' not in 'Número inválido\nNão primo'
+E         'Não primo' is contained here:
+E           Número inválido
+E           Não primo
+
+test_main.py:27: AssertionError
+______________________________ test_not_valid[-2] ______________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f6c4a99eec0>
+test_input = '-2'
+
+    @pytest.mark.parametrize(
+        "test_input", ["0", "-1", "-2", "-10"],
+    )
+    def test_not_valid(monkeypatch: MonkeyPatch, test_input: list[str]):
+        mocked_input = lambda prompt="": test_input
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        assert "Número inválido" in mocked_stdout.getvalue().strip()
+        assert "Primo" not in mocked_stdout.getvalue().strip()
+>       assert "Não primo" not in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Não primo' not in 'Número inválido\nNão primo'
+E         'Não primo' is contained here:
+E           Número inválido
+E           Não primo
+
+test_main.py:27: AssertionError
+_____________________________ test_not_valid[-10] ______________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f6c4ab31450>
+test_input = '-10'
+
+    @pytest.mark.parametrize(
+        "test_input", ["0", "-1", "-2", "-10"],
+    )
+    def test_not_valid(monkeypatch: MonkeyPatch, test_input: list[str]):
+        mocked_input = lambda prompt="": test_input
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        assert "Número inválido" in mocked_stdout.getvalue().strip()
+        assert "Primo" not in mocked_stdout.getvalue().strip()
+>       assert "Não primo" not in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Não primo' not in 'Número inválido\nNão primo'
+E         'Não primo' is contained here:
+E           Número inválido
+E           Não primo
+
+test_main.py:27: AssertionError
+=========================== short test summary info ============================
+FAILED test_main.py::test_not_valid[0] - AssertionError: assert 'Não primo' n...
+FAILED test_main.py::test_not_valid[-1] - AssertionError: assert 'Não primo' ...
+FAILED test_main.py::test_not_valid[-2] - AssertionError: assert 'Não primo' ...
+FAILED test_main.py::test_not_valid[-10] - AssertionError: assert 'Não primo'...
+========================= 4 failed, 22 passed in 0.27s =========================
